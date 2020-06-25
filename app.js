@@ -165,7 +165,6 @@ function updatePlotly2(newdata) {
     Plotly.restyle("bubble", newdata);
 }
 
-
     var updatemetadata_list = [];
     Object.entries(allData.metadata[idx]).forEach(([key, value]) => {
         updatemetadata_list.push(key +": "+ value);
@@ -173,19 +172,20 @@ function updatePlotly2(newdata) {
 
     console.log(updatemetadata_list)
 
-    // Call function to update the chart
-    // updatedemo(updatemetadata_list);
+    // Update new demographic info
+    d3.select("ul").selectAll("li").data(updatemetadata_list).text(d => d)
 
-    var deletemetadata = document.getElementById('sample-metadata');
-    deletemetadata.innerHTML = '';
+    // // Delete Current Demographic info
+    // var deletemetadata = document.getElementById('sample-metadata');
+    // deletemetadata.innerHTML = '';
 
-// function updatedemo(newdata) {
-    Demographic_Info = d3.select("#sample-metadata");
-    Demographic_Info.selectAll("li")
-        .data(updatemetadata_list)
-        .enter()
-        .append("li")
-        .html(String);
+    // // Update with new demographic info
+    // Demographic_Info = d3.select("#sample-metadata");
+    // Demographic_Info.selectAll("li")
+    //     .data(updatemetadata_list)
+    //     .enter()
+    //     .append("li")
+    //     .html(String);
 
 
 };
